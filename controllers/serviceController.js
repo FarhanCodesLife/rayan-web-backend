@@ -1,5 +1,5 @@
 import Service from '../models/Service.js';
-import { generateSlug } from '../utils/slugify.js';
+import { generateSlug } from '../utils/generateSlug.js';
 
 const getAll = async (req, res, next) => {
   try {
