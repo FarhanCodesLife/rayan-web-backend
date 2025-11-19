@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 import errorHandler from './middleware/errorHandler.js';
 
-import authRoutes from './routes/auth.js';
+import adminRoutes from './routes/admin.js';
 import serviceRoutes from './routes/services.js';
 import fleetRoutes from './routes/fleet.js';
 import bookingRoutes from './routes/bookings.js';
@@ -13,6 +13,7 @@ import blogRoutes from './routes/blog.js';
 import uploadRoutes from './routes/upload.js';
 import settingsRoutes from './routes/settings.js';
 
+dotenv.config();
 const app = express();
 
 const PORT = process.env.PORT || 5000;
@@ -26,7 +27,7 @@ app.use(cookieParser());
 connectDB(process.env.MONGO_URI);
 
 // routes
-app.use('/api/auth', authRoutes);
+app.use('/api/admin', adminRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/fleet', fleetRoutes);
 app.use('/api/bookings', bookingRoutes);
