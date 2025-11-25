@@ -16,6 +16,17 @@ const getOne = async (req, res, next) => {
   } catch (err) { next(err); }
 };
 
+// controllers/serviceController.js
+const getById = async (req, res, next) => {
+  try {
+    const s = await Service.findById(req.params.id);
+    if (!s) return res.status(404).json({ message: 'Not found' });
+    res.json(s);
+  } catch (err) { next(err); }
+};
+
+
+
 const create = async (req, res, next) => {
   try {
     const data = req.body;
@@ -41,4 +52,4 @@ const remove = async (req, res, next) => {
   } catch (err) { next(err); }
 };
 
-export default { getAll, getOne, create, update, remove };
+export default { getAll, getOne,getById, create, update, remove };  

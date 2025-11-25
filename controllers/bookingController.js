@@ -47,4 +47,13 @@ const updateStatus = async (req, res, next) => {
   } catch (err) { next(err); }
 };
 
-export default { create, getAll, updateStatus };
+const getById = async (req, res, next) => {
+  try {
+    const s = await Booking.findById(req.params.id);
+    if (!s) return res.status(404).json({ message: 'Not found' });
+    res.json(s);
+  } catch (err) { next(err); }
+};
+
+
+export default { create, getAll,getById, updateStatus };

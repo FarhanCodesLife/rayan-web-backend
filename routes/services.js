@@ -7,6 +7,9 @@ const router = express.Router();
 
 router.get('/', controller.getAll);
 router.get('/:slug', controller.getOne);
+// routes/service.js
+router.get('/id/:id', controller.getById); // new route
+
 router.post('/', auth, [
   body('title').notEmpty(),
   body('description').isLength({ min: 20 })

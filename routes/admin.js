@@ -2,7 +2,6 @@ import express from 'express';
 import { body } from 'express-validator';
 import adminController from '../controllers/adminController.js';
 import validate from '../middleware/validate.js';
-import authMiddleware from '../middleware/authMiddleware.js';
 import auth from '../middleware/auth.js';
 
 const router = express.Router();
@@ -21,9 +20,12 @@ router.post('/login', [
 ], validate, adminController.login);
 
 // Refresh token
-router.post('/refresh-token', adminController.refreshToken);
+router.get('/refresh-token', adminController.refreshToken);
 
 // Logout
 router.post('/logout', auth, adminController.logout);
+
+
+router.get('/me', auth, adminController.getMe);
 
 export default router;

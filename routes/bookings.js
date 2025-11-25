@@ -10,6 +10,7 @@ router.post('/', [
   body('phone').notEmpty(),
   body('serviceType').notEmpty()
 ], validate, controller.create);
+router.get('/id/:id', controller.getById); // new route
 
 router.get('/', auth, controller.getAll);
 router.put('/:id/status', auth, controller.updateStatus);
